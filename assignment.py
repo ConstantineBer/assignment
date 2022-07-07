@@ -4,7 +4,7 @@ Hello Python developer
 Good luck with this coding exercise for becoming a Python developer at Channable!
 
 # First, some context:
-Channable is an online tool that imports products from its users' eCommerceplatforms (e.g. WooCommerce) every day, 
+Channable is an online tool that imports products from its users' eCommerceplatforms (e.g. WooCommerce) every day,
 processes those products, and sends updates for those products to marketing channels (e.g. Amazon or eBay). 
 Technically speaking, Channable sends ​create​, ​update, and ​delete​ operations for these products. Every day when 
 Channable imports the products from the eCommerce platform, Channable needs to decide which operation it needs 
@@ -147,8 +147,8 @@ class ProductDiffer(ProductStreamProcessor):
         :param after_csv_reader: the after csv reader
         :return: the before and after data
         """
-        next(before_csv_reader)
-        file_headers: List[str] = next(after_csv_reader)
+        next(before_csv_reader)  # We need to skip the headers (first row)
+        file_headers: List[str] = next(after_csv_reader)  # We need to skip the headers (first row)
         before_csv_products: List[Dict[str, Dict[str, Any]]] = self.convert_data_from_csv(
             before_csv_reader,
             file_headers,
